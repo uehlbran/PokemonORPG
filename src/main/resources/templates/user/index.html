@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$</title>
+    <script th:src="@{webjars/jquery/3.4.0/jquery.min.js}"></script>
+    <script th:src="@{webjars/popper.js/1.14.3/umd/popper.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{webjars/bootstrap/4.4.1-1/css/bootstrap.min.css}"/>
+    <script th:src="@{webjars/bootstrap/4.4.1-1/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}"/>
+    <script th:src="@{webjars/font-awesome/5.13.0/js/all.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{webjars/font-awesome/5.13.0/css/all.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/footer.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{css/main.css}" />
+    <script th:src="@{js/main.js}"></script>
+</head>
+<body class="d-flex flex-column">
+    <header th:replace="fragments/user/header :: userHeader"></header>
+    <div th:replace="fragments/user/information :: information"></div>
+
+    <div class="container-fluid flex-grow-1 p-2 mt-2 border-top">
+        <div class="row">
+            <!-- Left sidebar Content -->
+
+            <!-- Left Offscreen Canvas Sidebar -->
+            <div class="bs-canvas bs-canvas-right position-fixed bg-light h-100">
+                <header class="bs-canvas-header p-3 overflow-auto bg-primary"> <!-- set background -->
+                    <button type="button" class="bs-canvas-close float-left close" aria-label="Close"><span aria-hidden="true" class="text-light">&times;</span></button>
+                    <h4 class="d-inline-block mb-0 float-right text-secondary">Canvas Header</h4> <!-- set text color -->
+                </header>
+                <div class="bs-canvas-content px-3 py-5">
+                    <!-- Place your sidebar content -->
+                </div>
+            </div>
+
+            <!-- End of Left Offscreen Canvas Sidebar -->
+            <div class="col d-none d-sm-none d-md-none d-xl-block col-lg-3 p-2">
+                <ul th:replace="fragments/user/left-sidebar :: left-sidebar"></ul>
+            </div>
+            <!-- End of Left Sidebar Content -->
+
+            <!-- Main Content -->
+            <div class="col">
+                <div class="row justify-content-center">
+                    <p>This is where the main content is going to go.</p>
+                </div>
+            </div>
+            <!-- End of Main Content -->
+            <div class="col d-none d-sm-none d-md-none d-xl-flex col-lg-3 border">
+                <p>R</p>
+            </div>
+        </div>
+    </div>
+
+    <footer th:replace="fragments/footer :: footer(year=${year})"></footer>
+</body>
+</html>

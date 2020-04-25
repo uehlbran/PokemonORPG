@@ -1,0 +1,89 @@
+body {
+    min-height: 100vh;
+    max-height: 100vh;
+}
+
+/* Media Queries */
+
+@media screen and (min-width: 1200px) {
+    .img-responsive {
+        width: 7.5vw;
+        height: 7.5vw;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .table-responsive {
+
+    }
+    .img-responsive {
+         width: 13vw;
+         height: 13vw;
+     }
+}
+
+@media screen and (max-width: 370px){
+    .d-xxs-none {
+        display: none;
+    }
+}
+
+/* End of Media Queries */
+
+/* Off-Screen Canvas Sidebar */
+
+.bs-canvas-overlay {
+    opacity: 0.85;
+    z-index: 1100;
+}
+
+.bs-canvas {
+    top: 0;
+    z-index: 1110;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 330px;
+    transition: margin .4s ease-out;
+    -webkit-transition: margin .4s ease-out;
+    -moz-transition: margin .4s ease-out;
+    -ms-transition: margin .4s ease-out;
+}
+
+.bs-canvas-left {
+    left: 0;
+    margin-left: -330px;
+}
+
+.bs-canvas-right {
+    right: 0;
+    margin-right: -330px;
+}
+
+.bs-canvas-overlay {
+    opacity: 0.85;
+    z-index: 1100;
+}
+
+.bs-canvas {
+    top: 0;
+    z-index: 1110;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 330px;
+    transition: margin .4s ease-out;
+    -webkit-transition: margin .4s ease-out;
+    -moz-transition: margin .4s ease-out;
+    -ms-transition: margin .4s ease-out;
+}
+
+.bs-canvas-left {
+    left: 0;
+    margin-left: -330px;
+}
+
+.bs-canvas-right {
+    right: 0;
+    margin-right: -330px;
+}
+
+/* End of Off Screen Canvas Sidebar */

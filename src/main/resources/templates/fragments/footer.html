@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div th:fragment="footer (year)" class="container-fluid border-top pt-3 fixed-bottom position-relative">
+        <div class="row align-content-center">
+            <div class="col">
+                <p class="p-footer" th:inline="text">
+                    &COPY; 2019 - [[${year}]] - <abbr>ORPG</abbr> - <a th:href="@{/legal}">Notice of Non-Affiliation and Disclaimer</a>
+                </p>
+                <p class="p-footer" th:text="|&COPY; 1995 - ${year} - Pok&egrave;mon - Nintendo, Gamefreak, Creatures, The Pok&egrave;mon Company|"></p>
+                <p class="p-footer lead">All names, logos, images, and brands are property of their respective owners.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div class="container-fluid" th:fragment="information">
+        <div class="row no-gutters ">
+            <!-- Text Stats -->
+            <div class="col-12 col-xl">
+                <div class="row">
+                    <div class="col">
+                        <div class="table-responsive d-xxs-none">
+                            <table th:replace="fragments/user/currency :: currency"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Text Stats -->
+            <!-- Party Pokemon -->
+            <div class="col-12 col-xl no-gutters m-0 p-0 text-xl-right text-center">
+                <!-- TODO: pass party pokemon to fragment -->
+                <div th:replace="fragments/user/party :: party"></div>
+            </div>
+            <!-- End of Party Pokemon -->
+        </div>
+    </div>
+</body>
+</html>

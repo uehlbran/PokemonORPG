@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORPG - Index</title>
+    <script th:src="@{webjars/jquery/3.4.0/jquery.min.js}"></script>
+    <script th:src="@{webjars/popper.js/1.14.3/umd/popper.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{webjars/bootstrap/4.4.1-1/css/bootstrap.min.css}"/>
+    <script th:src="@{webjars/bootstrap/4.4.1-1/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}"/>
+    <script th:src="@{webjars/font-awesome/5.13.0/js/all.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{webjars/font-awesome/5.13.0/css/all.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/footer.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/main.css}"/>
+</head>
+<body class="d-flex flex-column">
+
+    <!-- Header -->
+    <header th:replace="fragments/index/header :: indexHeaderFragment" id="header"></header>
+    <!-- End of Header -->
+
+
+    <!-- Main Content -->
+    <div class="container my-2 flex-grow-1" id="main-content">
+        <div class="row p-2">
+            <div class="col">
+                <div th:replace="__${page}__"></div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Main Content -->
+
+
+    <!-- Footer -->
+    <footer th:replace="fragments/footer :: footer(year=${year})"></footer>
+<!-- End of Footer -->
+</body>
+</html>

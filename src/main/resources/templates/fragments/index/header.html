@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div th:fragment="indexHeaderFragment" class="container-fluid">
+        <nav class="navbar row p-2 border align-items-center">
+            <div class="col-12 col-md-12 col-lg-5 navbar-brand">
+                <img class="img-fluid" th:src="@{modified_banner_smaller.png}" />
+            </div>
+            <div class="col-12 col-md-12 col-lg-4 ml-auto navbar-nav">
+                <div class="row">
+                    <div class="col nav-item">
+                        <a class="btn btn-block border nav-link" th:href="@{/login}">Login</a>
+                    </div>
+                    <div class="col nav-item">
+                        <a class="btn btn-block border nav-link" th:href="@{#}">Register</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</body>
+</html>

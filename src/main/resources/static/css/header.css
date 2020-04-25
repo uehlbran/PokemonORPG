@@ -1,0 +1,53 @@
+
+.btn-outline-pokemon-yellow {
+    border-color: #F2CF0D;
+    color: #F2CF0D;
+}
+.btn-outline-pokemon-blue {
+    border-color: #3D7DCA;;
+    color: #3D7DCA;;
+}
+.btn-outline-pokemon-navy {
+    border-color: #003A70;;
+    color: #003A70;;
+}
+.btn-outline-pokeball-red {
+     border-color: #ee1515;
+     color: #ee1515;
+ }
+.btn-outline-pokeball-grey {
+    border-color: #f0f0f0;
+    color: #f0f0f0;
+}
+.bg-pokeball-grey {
+    background-color: #f0f0f0;
+}
+.btn-outline-pokeball-black {
+    border-color: #222224;
+    color: #222224;
+}
+
+.btn-outline-pikachu-yellow {
+    border-color: #FAD61D;
+    color: #FAD61D;
+}
+
+.btn-outline-pikachu-brown {
+    border-color: #E19720;
+    color: #E19720;
+}
+
+.btn-outline-gengar-lightpurple {
+    border-color: #8877BB;
+    color: #8877BB;
+}
+
+.btn-outline-gengar-purple {
+    border-color: #6655AA;
+    color: #6655AA;
+}
+
+.btn-outline-gengar-darkpurple {
+    border-color: #443377;
+    color: #443377;
+}
