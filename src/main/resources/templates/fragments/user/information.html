@@ -2,9 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
     <div class="container-fluid" th:fragment="information">
-        <div class="row no-gutters ">
+        <div class="row border-bottom pb-2 border-dark">
             <!-- Text Stats -->
-            <div class="col-12 col-xl">
+            <div class="col-12 col-md-12 col-lg">
                 <div class="row">
                     <div class="col">
                         <div class="table-responsive d-xxs-none">
@@ -15,7 +15,7 @@
             </div>
             <!-- End of Text Stats -->
             <!-- Party Pokemon -->
-            <div class="col-12 col-xl no-gutters m-0 p-0 text-xl-right text-center">
+            <div class="col-12 col-md-12 col-lg">
                 <!-- TODO: pass party pokemon to fragment -->
                 <div th:replace="fragments/user/party :: party"></div>
             </div>

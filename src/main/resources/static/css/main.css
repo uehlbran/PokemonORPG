@@ -3,6 +3,17 @@ body {
     max-height: 100vh;
 }
 
+.progress-bar-container {
+    position: relative;
+}
+
+.progress-bar-experience {
+    position: absolute;
+    height: 5px;
+    bottom: 1px;
+    width: 100%;
+}
+
 /* Sidebars */
 #left-sidebar a, #right-sidebar a {
     font-size: 0.85rem;
@@ -10,6 +21,11 @@ body {
 /* End of Sidebars */
 
 /* Media Queries */
+
+@media screen and (min-width: 768px) {
+
+}
+
 @media screen and (max-width: 370px){
     .d-xxs-none {
         display: none;
