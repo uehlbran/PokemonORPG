@@ -1,4 +1,98 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<body></body>
+<body>
+<div th:fragment="right-sidebar" class="" id="right-sidebar">
+    <div class="row justify-content-center">
+        <ul class="nav flex-column pb-2 w-100">
+            <!-- Map Sidebar Content -->
+            <div class="col">
+                <div class="border p-3 mb-2">
+                    <h5 class="nav-item text-center border-bottom">Maps</h5>
+                    <li class="nav-item dropdown">
+                        <a th:href="@{#}" class="nav-link dropdown-toggle"
+                           id="kantoDropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kanto Maps</a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="kantoDropdownMenu">
+                            <a th:href="@{#}" class="dropdown-item">Cerulean Cave</a>
+                            <a th:href="@{#}" class="dropdown-item">Celadon Game Corner</a>
+                            <a th:href="@{#}" class="dropdown-item">Mt. Moon</a>
+                            <a th:href="@{#}" class="dropdown-item">Pokemon Mansion</a>
+                            <a th:href="@{#}" class="dropdown-item">Power Plant</a>
+                            <a th:href="@{#}" class="dropdown-item">Rock Tunnel</a>
+                            <a th:href="@{#}" class="dropdown-item">Safari Zone</a>
+                            <a th:href="@{#}" class="dropdown-item">Silph Co.</a>
+                            <a th:href="@{#}" class="dropdown-item">Victory Road</a>
+                            <a th:href="@{#}" class="dropdown-item">Viridian Forest</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a th:href="@{#}" class="nav-link dropdown-toggle"
+                           id="johtoDropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Johto Maps</a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="johtoDropdownMenu">
+                            <a th:href="@{#}" class="dropdown-item">Dragons Den</a>
+                            <a th:href="@{#}" class="dropdown-item">Whirl Islands</a>
+                            <a th:href="@{#}" class="dropdown-item">Lake of Rage</a>
+                            <a th:href="@{#}" class="dropdown-item">Ice Path</a>
+                            <a th:href="@{#}" class="dropdown-item">Ruins of Alph</a>
+                            <a th:href="@{#}" class="dropdown-item">Bell tower</a>
+                            <a th:href="@{#}" class="dropdown-item">Burned Tower</a>
+                            <a th:href="@{#}" class="dropdown-item">Dark Cave</a>
+                            <a th:href="@{#}" class="dropdown-item">Union Cave</a>
+                            <a th:href="@{#}" class="dropdown-item">Mt. Silver</a>
+                            <a th:href="@{#}" class="dropdown-item">Mt. Mortar</a>
+                            <a th:href="@{#}" class="dropdown-item">Silver Cave</a>
+                            <a th:href="@{#}" class="dropdown-item">Dark Cave</a>
+                            <a th:href="@{#}" class="dropdown-item">Pokemon Tower</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a th:href="@{#}" class="nav-link dropdown-toggle"
+                           id="hoennDropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Johto Maps</a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="hoennDropdownMenu">
+                            <a th:href="@{#}" class="dropdown-item">Petalburg Woods</a>
+                            <a th:href="@{#}" class="dropdown-item">Granite Cave</a>
+                            <a th:href="@{#}" class="dropdown-item">New Mauville</a>
+                            <a th:href="@{#}" class="dropdown-item">Mt. Chimney</a>
+                            <a th:href="@{#}" class="dropdown-item">Cave of Origin</a>
+                            <a th:href="@{#}" class="dropdown-item">Scorched Slab</a>
+                            <a th:href="@{#}" class="dropdown-item">Seafloor Cavern</a>
+                            <a th:href="@{#}" class="dropdown-item">Sealed Chamber</a>
+                            <a th:href="@{#}" class="dropdown-item">Southern Island</a>
+                            <a th:href="@{#}" class="dropdown-item">Meteor Falls</a>
+                            <a th:href="@{#}" class="dropdown-item">Shoal Cave</a>
+                            <a th:href="@{#}" class="dropdown-item">Mt. Pyre</a>
+                            <a th:href="@{#}" class="dropdown-item">Jagged Pass</a>
+                            <a th:href="@{#}" class="dropdown-item">Sky Pillar</a>
+                            <a th:href="@{#}" class="dropdown-item">Island Cave</a>
+                            <a th:href="@{#}" class="dropdown-item">Desert Ruins</a>
+                            <a th:href="@{#}" class="dropdown-item">Ancient Tomb</a>
+                            <a th:href="@{#}" class="dropdown-item">Battle Frontier</a>
+                            <a th:href="@{#}" class="dropdown-item">Mirage Tower</a>
+                            <a th:href="@{#}" class="dropdown-item">Battle Resort</a>
+                            <a th:href="@{#}" class="dropdown-item">Abandoned Ship</a>
+                            <a th:href="@{#}" class="dropdown-item">Artisan Cave</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{#}" class="nav-link">Sinnoh Maps</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{#}" class="nav-link">Unova Maps</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{#}" class="nav-link">Kalos Maps</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{#}" class="nav-link">Alola Maps</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{#}" class="nav-link">Galar Maps</a>
+                    </li>
+                </div>
+            </div>
+            <!-- End of Map Sidebar Content -->
+        </ul>
+    </div>
+
+</div>
+</body>
 </html>

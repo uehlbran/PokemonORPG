@@ -18,10 +18,8 @@
     <header th:replace="fragments/user/header :: userHeader"></header>
     <div th:replace="fragments/user/information :: information"></div>
 
-    <div class="container-fluid flex-grow-1 p-2 mt-2 border-top">
+    <div class="container-fluid flex-grow-1 mt-2 border-top pt-2">
         <div class="row">
-            <!-- Left sidebar Content -->
-
             <!-- Left Offscreen Canvas Sidebar -->
             <div class="bs-canvas bs-canvas-right position-fixed bg-light h-100">
                 <header class="bs-canvas-header p-3 overflow-auto bg-primary"> <!-- set background -->
@@ -32,23 +30,28 @@
                     <!-- Place your sidebar content -->
                 </div>
             </div>
-
             <!-- End of Left Offscreen Canvas Sidebar -->
-            <div class="col d-none d-sm-none d-md-none d-xl-block col-lg-3 p-2">
+
+            <!-- Left Sidebar -->
+            <div class="col d-none d-sm-none d-md-none d-xl-block col-lg-3">
                 <ul th:replace="fragments/user/left-sidebar :: left-sidebar"></ul>
             </div>
-            <!-- End of Left Sidebar Content -->
+            <!-- End of Left Sidebar -->
 
             <!-- Main Content -->
+
             <div class="col">
                 <div class="row justify-content-center">
                     <p>This is where the main content is going to go.</p>
                 </div>
             </div>
             <!-- End of Main Content -->
-            <div class="col d-none d-sm-none d-md-none d-xl-flex col-lg-3 border">
-                <p>R</p>
+
+            <!-- Right Sidebar -->
+            <div class="col d-none d-sm-none d-md-none d-xl-block col-lg-3 text-right">
+                <ul th:replace="fragments/user/right-sidebar :: right-sidebar"></ul>
             </div>
+            <!-- End of Right Sidebar -->
         </div>
     </div>
 

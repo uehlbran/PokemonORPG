@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
-    <div th:fragment="left-sidebar" class="">
+    <div th:fragment="left-sidebar" class="" id="left-sidebar">
         <div class="row justify-content-center">
             <ul class="nav flex-column pb-2 w-100">
                 <!-- Trainer Sidebar Content -->
@@ -13,7 +13,9 @@
                                 <div class="input-group">
                                     <input class="form-control" type="search" placeholder="Trainer Name/ID" aria-label="Search" />
                                     <div class="input-group-append">
-                                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                                        <button class="btn btn-outline-primary" type="submit">
+                                            <i class="fas fa-search"></i>
+                                        </button>
                                     </div>
                                 </div>
                             </form>
@@ -25,58 +27,56 @@
                 </div>
                 <!-- End of Trainer Sidebar Content -->
 
-                <!-- Gym Sidebar Content -->
+                <!-- Ranking Sidebar Content -->
                 <div class="col">
-                    <div class="border p-3">
-                        <h5 class="nav-item text-center border-bottom">Gyms</h5>
-                        </li>
+                    <div class="border p-3 mb-2">
+                        <h5 class="nav-item text-center border-bottom">Rankings</h5>
                         <li class="nav-item active">
                             <a th:href="@{#}" class="nav-link">Trainer Rankings</a>
                         </li>
+                        <li class="nav-item active">
+                            <a th:href="@{#}" class="nav-link">Team Rankings</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a th:href="@{#}" class="nav-link">Pokemon Rankings</a>
+                        </li>
                     </div>
                 </div>
-                <!-- End of Gym Sidebar Content -->
+                <!-- End of Ranking Sidebar Content -->
+
+                <!-- Gyms Sidebar Content -->
+                <div class="col">
+                    <div class="border p-3">
+                        <h5 class="nav-item text-center border-bottom">Gyms</h5>
+                        <li class="nav-item active">
+                            <a th:href="@{#}" class="nav-link">Kanto Gym Leaders</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a th:href="@{#}" class="nav-link">Johto Gym Leaders</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a th:href="@{#}" class="nav-link">Hoenn Gym Leaders</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a th:href="@{#}" class="nav-link">Sinnoh Gym Leaders</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a th:href="@{#}" class="nav-link">Unova Gym Leaders</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a th:href="@{#}" class="nav-link">Kalos Gym Leaders</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a th:href="@{#}" class="nav-link">Alola Gym Leaders</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a th:href="@{#}" class="nav-link">Galar Gym Leaders</a>
+                        </li>
+                    </div>
+                </div>
+                <!-- End of Gyms Sidebar Content -->
             </ul>
         </div>
-
     </div>
 </body>
 </html>
-
-
-
-
-<!--
-<li class="nav-item mb-1 border-bottom mb-2 text-center dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-               aria-expanded="false">
-                Trainers
-            </a>
-            <div class="dropdown-menu text-center">
-                <h6 class="dropdown-header">Search</h6>
-                <div class="dropdown-divider"></div>
-                <form class="form-inline form-group pt-1">
-                    <div class="input-group">
-                        <input class="form-control" type="search" size="30" placeholder="Trainer name/id" aria-label="Search" />
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-primary" type="submit">Search</button>
-                        </div>
-                    </div>
-                </form>
-                <a class="dropdown-item" th:href="@{#}">Link</a>
-            </div>
-        </li>
--->
-
-
-
-<!--
-<nav class="navbar navbar-dark default-color">
-  <form class="form-inline">
-    <div class="md-form my-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-    </div>
-    <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" type="submit">Search</button>
-  </form>
-</nav>
--->

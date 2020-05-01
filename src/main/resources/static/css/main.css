@@ -3,31 +3,18 @@ body {
     max-height: 100vh;
 }
 
+/* Sidebars */
+#left-sidebar a, #right-sidebar a {
+    font-size: 0.85rem;
+}
+/* End of Sidebars */
+
 /* Media Queries */
-
-@media screen and (min-width: 1200px) {
-    .img-responsive {
-        width: 7.5vw;
-        height: 7.5vw;
-    }
-}
-
-@media screen and (max-width: 1199px) {
-    .table-responsive {
-
-    }
-    .img-responsive {
-         width: 13vw;
-         height: 13vw;
-     }
-}
-
 @media screen and (max-width: 370px){
     .d-xxs-none {
         display: none;
     }
 }
-
 /* End of Media Queries */
 
 /* Off-Screen Canvas Sidebar */
