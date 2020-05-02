@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.time.LocalDate;
 
 @Controller
-public class TestController {
+public class IndexController {
 
     @GetMapping({"", "/index"})
     public String getIndexPage(Model model) {

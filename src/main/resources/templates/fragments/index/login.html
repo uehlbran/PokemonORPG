@@ -2,8 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
     <div th:fragment="login" class="row">
+
+        <ul>
+            <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+        </ul>
+
         <div class="col-12 col-md-12 col-lg-8 mx-auto border p-3">
-            <form class="">
+            <form th:action="@{/login}" th:method="POST">
                 <div class="form-group">
                     <label for="username">Username: </label>
                     <div class="input-group">
