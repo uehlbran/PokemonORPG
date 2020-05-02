@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import orpg.com.pokemonorpg.handlers.AuthenticationSuccessRedirectHandler;
 import orpg.com.pokemonorpg.services.UserService;
 
 @EnableWebSecurity
@@ -28,8 +30,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .antMatchers("/**").permitAll()
                     .antMatchers("/h2").permitAll()
                     .antMatchers("/user/**").authenticated()
-                .and().formLogin().loginPage("/login").permitAll()
-                .and().csrf().disable();
+                .and().formLogin()
+                    .loginPage("/login").permitAll()
+                    .successHandler(authenticationSuccessHandler())
+                .and().csrf()
+                    .disable();
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler authenticationSuccessHandler() {
+        return new AuthenticationSuccessRedirectHandler();
     }
 
     @Bean

@@ -10,7 +10,7 @@ public enum Type {
     Poison,
     Electric,
     Ground,
-    Rock, 
+    Rock,
     Psychic,
     Ice,
     Bug,
