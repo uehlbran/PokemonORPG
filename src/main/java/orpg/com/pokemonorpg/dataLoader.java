@@ -2,7 +2,7 @@ package orpg.com.pokemonorpg;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import orpg.com.pokemonorpg.entities.User;
+import orpg.com.pokemonorpg.entities.trainer.User;
 import orpg.com.pokemonorpg.services.UserService;
 
 import java.time.LocalDate;

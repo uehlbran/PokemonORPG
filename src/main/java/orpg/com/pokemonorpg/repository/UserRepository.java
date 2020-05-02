@@ -2,7 +2,7 @@ package orpg.com.pokemonorpg.repository;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
-import orpg.com.pokemonorpg.entities.User;
+import orpg.com.pokemonorpg.entities.trainer.User;
 
 import java.util.Optional;
 

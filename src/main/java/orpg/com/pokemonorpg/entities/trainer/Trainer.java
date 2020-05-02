@@ -1,4 +1,4 @@
-package orpg.com.pokemonorpg.entities;
+package orpg.com.pokemonorpg.entities.trainer;
 
 import lombok.Data;
 
