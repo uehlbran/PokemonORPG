@@ -21,6 +21,7 @@ public class dataLoader implements CommandLineRunner {
         user.setPassword("password");
         user.setUsername("username");
         user.setDob(LocalDate.now());
+        user.setIcon("/images/icons/blackbelt.png");
         service.save(user);
     }
 }

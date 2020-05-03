@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import orpg.com.pokemonorpg.entities.trainer.User;
-import orpg.com.pokemonorpg.repository.UserRepository;
+import orpg.com.pokemonorpg.repositories.UserRepository;
 
 import java.util.Optional;
 

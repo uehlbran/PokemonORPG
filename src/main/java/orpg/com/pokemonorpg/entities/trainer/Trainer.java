@@ -12,4 +12,5 @@ public class Trainer implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "trainer_generator")
     @SequenceGenerator(name = "trainer_generator", sequenceName = "trainer_seq", initialValue = 100, allocationSize = 1)
     private Long id;
+    private String icon;
 }

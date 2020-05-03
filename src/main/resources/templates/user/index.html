@@ -15,7 +15,7 @@
     <script th:src="@{/js/main.js}"></script>
 </head>
 <body class="d-flex flex-column">
-    <header th:replace="fragments/user/header :: userHeader"></header>
+    <header th:replace="fragments/user/header :: userHeader(${user})"></header>
     <div th:replace="fragments/user/information :: information"></div>
 
     <div class="container-fluid flex-grow-1 mt-2">

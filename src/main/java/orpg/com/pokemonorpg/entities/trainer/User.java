@@ -2,11 +2,14 @@ package orpg.com.pokemonorpg.entities.trainer;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.NaturalId;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Entity;
+import javax.persistence.Version;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Objects;
@@ -14,7 +17,11 @@ import java.util.Objects;
 @Entity
 @Data
 @NoArgsConstructor
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class User extends Trainer implements UserDetails {
+    @Version
+    private int version;
     @NaturalId
     private String username;
     private String password;
