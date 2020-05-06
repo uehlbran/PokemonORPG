@@ -3,10 +3,7 @@ package orpg.com.pokemonorpg.entities.pokemon;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -15,4 +12,7 @@ public class Pokemon {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+    @OneToOne
+    @JoinColumn(name = "species_id")
+    private Species species;
 }

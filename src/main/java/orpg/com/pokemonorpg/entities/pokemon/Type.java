@@ -18,5 +18,6 @@ public enum Type {
     Steel,
     Dragon,
     Dark,
-    Fairy
+    Fairy,
+    None
 }
