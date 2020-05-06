@@ -3,6 +3,7 @@ package orpg.com.pokemonorpg.entities.pokemon;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import orpg.com.pokemonorpg.entities.Gender;
 import orpg.com.pokemonorpg.entities.Image;
 import orpg.com.pokemonorpg.entities.item.Item;
@@ -13,6 +14,8 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Species {
     @Id
     private long id;
