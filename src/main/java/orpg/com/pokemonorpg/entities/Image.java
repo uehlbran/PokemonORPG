@@ -1,7 +1,6 @@
-package orpg.com.pokemonorpg.entities.pokemon;
+package orpg.com.pokemonorpg.entities;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,8 +10,12 @@ import javax.persistence.Id;
 @Entity
 @Data
 @NoArgsConstructor
-public class Pokemon {
+@AllArgsConstructor
+public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Setter(value = AccessLevel.NONE)
     private Long id;
+    private String fileName;
+    private String fileLocation;
 }
