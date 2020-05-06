@@ -29,4 +29,6 @@ public class MapLoot {
         this.pokemon = pokemon;
         this.id = new MapLootId(map.getId(), pokemon.getId());
     }
+
+    //TODO: Add equals and hashcode methods
 }
