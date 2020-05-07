@@ -16,6 +16,10 @@ public class ImageService {
         return repository.findImageById(id).orElseThrow(() -> new RuntimeException("Unable to find image"));
     }
 
+    public Image findImageByImageName(String name) {
+        return repository.findImageByImageName(name).orElseThrow(() -> new RuntimeException("Unable to find image"));
+    }
+
     public Image save(Image image) {
         return repository.save(image);
     }

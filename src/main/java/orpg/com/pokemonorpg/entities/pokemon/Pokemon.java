@@ -3,6 +3,7 @@ package orpg.com.pokemonorpg.entities.pokemon;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import orpg.com.pokemonorpg.entities.Gender;
 
 import javax.persistence.*;
 
@@ -18,4 +19,6 @@ public class Pokemon {
     @OneToOne
     @JoinColumn(name = "species_id")
     private Species species;
+    @Enumerated(value = EnumType.STRING)
+    private Gender gender;
 }
