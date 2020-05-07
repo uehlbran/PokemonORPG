@@ -32,13 +32,12 @@ public class UserPokemon {
         if (this == o) return true;
         if (!(o instanceof UserPokemon)) return false;
         UserPokemon that = (UserPokemon) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(user, that.user) &&
+        return Objects.equals(user, that.user) &&
                 Objects.equals(pokemon, that.pokemon);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, user, pokemon);
+        return Objects.hash(user, pokemon);
     }
 }
