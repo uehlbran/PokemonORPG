@@ -2,39 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
 <!-- TODO: pass party pokemon to fragment -->
-<div th:fragment="party" class="row no-gutters">
-    <div class="col no-gutters progress-bar-container m-1">
-        <img class="img-fluid border w-100" th:src="@{/static/images/sprites/pokemon/normal/1.png}" />
-        <div class="progress progress-bar-experience">
-            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-    </div>
-    <div class="col no-gutters progress-bar-container m-1">
-        <img class="img-fluid border w-100" th:src="@{/static/images/sprites/pokemon/normal/1.png}" />
-        <div class="progress progress-bar-experience">
-            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-    </div>
-    <div class="col no-gutters progress-bar-container m-1">
-        <img class="img-fluid border w-100" th:src="@{/static/images/sprites/pokemon/normal/1.png}" />
-        <div class="progress progress-bar-experience">
-            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-    </div>
-    <div class="col no-gutters progress-bar-container m-1">
-        <img class="img-fluid border w-100" th:src="@{/static/images/sprites/pokemon/normal/1.png}" />
-        <div class="progress progress-bar-experience">
-            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-    </div>
-    <div class="col no-gutters progress-bar-container m-1">
-        <img class="img-fluid border w-100" th:src="@{/static/images/sprites/pokemon/normal/1.png}" />
-        <div class="progress progress-bar-experience">
-            <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-    </div>
-    <div class="col no-gutters progress-bar-container m-1">
-        <img class="img-fluid border w-100" th:src="@{/static/images/sprites/pokemon/normal/1.png}" />
+<div th:fragment="party(party)" class="row no-gutters">
+    <div th:each="i : ${#numbers.sequence(0, 5)}" class="col no-gutters progress-bar-container m-1">
+        <img class="img-fluid border w-100" th:src="@{${i < party.size()} ?
+        ${party.get(i).species.icon} : '/images/sprites/pokemon/no-image.png'}" />
         <div class="progress progress-bar-experience">
             <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
@@ -42,3 +13,4 @@
 </div>
 </body>
 </html>
+

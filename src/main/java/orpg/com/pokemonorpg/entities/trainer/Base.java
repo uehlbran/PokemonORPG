@@ -1,7 +1,7 @@
 package orpg.com.pokemonorpg.entities.trainer;
 
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Getter;
 import lombok.Setter;
 import orpg.com.pokemonorpg.entities.Image;
 
@@ -9,8 +9,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @MappedSuperclass
-@Data
-public class Trainer implements Serializable {
+@Getter @Setter
+public class Base implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "trainer_generator")
     @SequenceGenerator(name = "trainer_generator", sequenceName = "trainer_seq", initialValue = 100, allocationSize = 1)

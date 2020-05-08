@@ -17,7 +17,7 @@
             <!-- Party Pokemon -->
             <div class="col-12 col-md-12 col-lg">
                 <!-- TODO: pass party pokemon to fragment -->
-                <div th:replace="fragments/user/party :: party"></div>
+                <div th:replace="fragments/user/party :: party(${party})"></div>
             </div>
             <!-- End of Party Pokemon -->
         </div>

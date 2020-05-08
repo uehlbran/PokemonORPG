@@ -4,15 +4,16 @@ import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import orpg.com.pokemonorpg.entities.Gender;
 import orpg.com.pokemonorpg.entities.Image;
 import orpg.com.pokemonorpg.entities.pokemon.ElementType;
 import orpg.com.pokemonorpg.entities.pokemon.Pokemon;
 import orpg.com.pokemonorpg.entities.pokemon.PokemonType;
 import orpg.com.pokemonorpg.entities.pokemon.Species;
+import orpg.com.pokemonorpg.entities.trainer.Party;
+import orpg.com.pokemonorpg.entities.trainer.Roles;
 import orpg.com.pokemonorpg.entities.trainer.User;
-import orpg.com.pokemonorpg.entities.trainer.UserPokemon;
-import orpg.com.pokemonorpg.entities.trainer.UserPokemonId;
 import orpg.com.pokemonorpg.services.*;
 
 import java.io.BufferedWriter;
@@ -27,18 +28,14 @@ public class dataLoader implements CommandLineRunner {
     private final ImageService imageService;
     private final SpeciesService speciesService;
     private final PokemonService pokemonService;
-    private final UserPokemonService userPokemonService;
+    private final PartyService partyService;
 
-    public dataLoader(UserService userService,
-                      ImageService imageService,
-                      SpeciesService speciesService,
-                      PokemonService pokemonService,
-                      UserPokemonService userPokemonService) {
+    public dataLoader(UserService userService, ImageService imageService, SpeciesService speciesService, PokemonService pokemonService, PartyService partyService) {
         this.userService = userService;
         this.imageService = imageService;
         this.speciesService = speciesService;
         this.pokemonService = pokemonService;
-        this.userPokemonService = userPokemonService;
+        this.partyService = partyService;
     }
 
     private void createSpeciesSqlFile(String pokedexNumber,
@@ -117,12 +114,12 @@ public class dataLoader implements CommandLineRunner {
             Image shinyImage = new Image("/images/sprites/pokemon/shiny/", row[0], ".png", "Shiny" + row[1]);
             imageService.save(shinyImage);
             //create dark pokemon image
-            createPokemonImageSqlFile("?", "Dark" + row[1], "/images/sprites/pokemon/dark/");
+            createPokemonImageSqlFile("no-image", "Dark" + row[1], "/images/sprites/pokemon/dark/");
             //add image to database
             Image darkImage = new Image("/images/sprites/pokemon/dark/", row[0], ".png", "Dark" + row[1]);
             imageService.save(darkImage);
             //create golden pokemon image
-            createPokemonImageSqlFile("?", "Golden" + row[1], "/images/sprites/pokemon/golden/");
+            createPokemonImageSqlFile("no-image", "Golden" + row[1], "/images/sprites/pokemon/golden/");
             //add image to database
             Image goldenImage = new Image("/images/sprites/pokemon/golden/", row[0], ".png", "Golden" + row[1]);
             imageService.save(goldenImage);
@@ -181,45 +178,32 @@ public class dataLoader implements CommandLineRunner {
     }
 
     @Override
+    @Transactional
     public void run(String... args) throws Exception {
         //loadSpecies();
 
-        //create pokemon icon
-        Image pokemonIcon = imageService.findImageById(1L);
+        Image userImage = imageService.findImageByImageName("Bulbasaur");
 
-        //create Pokemon species
-        Species species = speciesService.findSpeciesById(25L);
+        User user = User.Factory.createUser(
+                "username",
+                "password",
+                Gender.MALE,
+                LocalDate.now(),
+                Roles.USER,
+                userImage);
 
-        //create pokemon
-        Pokemon pokemon = new Pokemon();
-        pokemon.setSpecies(species);
-        pokemon.setGender(Gender.MALE);
-        //save pokemon
-        pokemonService.save(pokemon);
+        Species species = Species.Factory.getSpecies("Bulbasaur", speciesService);
 
-        //create user
-        User user = new User();
-        user.setPassword("password");
-        user.setUsername("username");
-        user.setDob(LocalDate.now());
-        user.setIcon(pokemonIcon);
-        //save user
+        Pokemon pokemon = Pokemon.Factory.createPokemon(
+                user,
+                species,
+                Gender.MALE);
+
+        Party party = Party.Factory.createParty(user);
+
         userService.save(user);
-
-
-        //create user_pokemon_id
-        UserPokemonId userPokemonId = new UserPokemonId();
-        userPokemonId.setUserId(user.getId());
-        userPokemonId.setPokemonId(pokemon.getId());
-        //save user_pokemon_id
-
-        //create user_pokemon
-        UserPokemon userPokemon = new UserPokemon();
-        userPokemon.setPokemon(pokemon);
-        userPokemon.setUser(user);
-        userPokemon.setId(userPokemonId);
-        //save user_pokemon
-        userPokemonService.save(userPokemon);
-
+        speciesService.save(species);
+        pokemonService.save(pokemon);
+        partyService.save(party);
     }
 }
