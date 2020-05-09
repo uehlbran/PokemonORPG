@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Embeddable;
+import javax.persistence.FetchType;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -24,7 +25,7 @@ public class UserDetailsImpl implements UserDetails {
     protected boolean isCredentialsNonExpired = true;
     protected boolean isEnabled = true;
     @Setter(value = AccessLevel.NONE)
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     protected Set<GrantedAuthority> roles = new HashSet<>();
 
     @Override
