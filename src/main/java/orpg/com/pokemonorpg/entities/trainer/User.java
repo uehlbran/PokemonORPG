@@ -24,14 +24,11 @@ import java.util.Set;
 public class User extends Base {
     @Version
     private int version;
-    @Enumerated(value = EnumType.STRING)
-    private Gender gender;
 
     //Pokemon Settings
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @Setter(value = AccessLevel.NONE)
     private Set<Pokemon> pokemon = new HashSet<>();
-    private LocalDate dob;
     @Setter(value = AccessLevel.NONE)
     private int maxPokemon = 500;
 
@@ -48,8 +45,8 @@ public class User extends Base {
         this.userDetails.username = username;
         this.userDetails.password = password;
         this.userDetails.roles = roles;
-        this.dob = dob;
-        this.gender = gender;
+        this.setDob(dob);
+        this.setGender(gender);
         this.setIcon(icon);
     }
 

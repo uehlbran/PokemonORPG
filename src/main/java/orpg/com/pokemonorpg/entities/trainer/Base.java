@@ -3,10 +3,12 @@ package orpg.com.pokemonorpg.entities.trainer;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import orpg.com.pokemonorpg.entities.Gender;
 import orpg.com.pokemonorpg.entities.Image;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @MappedSuperclass
 @Getter @Setter
@@ -19,4 +21,7 @@ public class Base implements Serializable {
     @OneToOne
     @JoinColumn(name = "icon_id")
     private Image icon;
+    @Enumerated(value = EnumType.STRING)
+    private Gender gender;
+    private LocalDate dob;
 }
