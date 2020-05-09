@@ -25,14 +25,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/js/**", "/css/**", "/images/**").permitAll()
-                .antMatchers("/h2").permitAll()
-                .antMatchers("/user/**").authenticated()
+        http.headers().frameOptions().disable()
                 .and()
-                .formLogin()
+                    .authorizeRequests().antMatchers("/", "/js/**", "/css/**", "/images/**").permitAll()
+                .and()
+                    .authorizeRequests().antMatchers("/h2", "/h2/**", "/h2-console/**").permitAll()
+                .and()
+                    .authorizeRequests().antMatchers("/user/**").authenticated()
+                .and()
+                    .formLogin()
                     .loginPage("/login").permitAll()
-                    .successHandler(authenticationSuccessHandler());
+                    .successHandler(authenticationSuccessHandler())
+                .and()
+                    .csrf().disable();
     }
 
     @Bean

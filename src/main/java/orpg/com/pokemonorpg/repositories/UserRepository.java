@@ -12,6 +12,4 @@ import java.util.Optional;
 public interface UserRepository extends PagingAndSortingRepository<User, Long> {
     @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     Optional<User> findUserByUserDetailsUsername(String username);
-    @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
-    Optional<User> findUserById(Long id);
 }

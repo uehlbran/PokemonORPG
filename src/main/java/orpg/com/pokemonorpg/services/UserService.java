@@ -8,8 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 import orpg.com.pokemonorpg.entities.trainer.User;
 import orpg.com.pokemonorpg.repositories.UserRepository;
 
-import java.util.Optional;
-
 @Service
 public class UserService implements UserDetailsService {
     private final UserRepository repository;
@@ -18,13 +16,9 @@ public class UserService implements UserDetailsService {
         this.repository = repository;
     }
     @Transactional
-    public User findUserByUsername(String username) {
-        return repository.findUserByUserDetailsUsername(username).orElseThrow(() -> new RuntimeException("User was not found!"));
-    }
-    @Transactional
-    public User findUserById(Long id) {
-        Optional<User> user = repository.findUserById(id);
-        return user.orElseThrow(() -> new RuntimeException("User was not found!"));
+    public User findUserByUsername(String username) throws UsernameNotFoundException {
+        return repository.findUserByUserDetailsUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User was not found!"));
     }
     @Override
     @Transactional

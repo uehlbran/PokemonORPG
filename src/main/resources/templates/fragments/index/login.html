@@ -3,11 +3,20 @@
 <body>
     <div th:fragment="login" class="row">
 
-        <ul>
+        <!--<ul>
             <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
-        </ul>
+        </ul>-->
 
         <div class="col-12 col-md-12 col-lg-8 mx-auto border p-3">
+            <!-- Failed Login Error Message -->
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${param.error}">
+                Login failed: Invalid username or password.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- End of Failed Login Error Message -->
+
             <form th:action="@{/login}" th:method="POST">
                 <div class="form-group">
                     <label for="username">Username: </label>
