@@ -4,7 +4,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import orpg.com.pokemonorpg.entities.trainer.User;
+import orpg.com.pokemonorpg.entities.trainer.UserDetailsImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -25,8 +25,8 @@ public class AuthenticationSuccessRedirectHandler implements AuthenticationSucce
     private void redirect(HttpServletRequest httpServletRequest,
                           HttpServletResponse httpServletResponse,
                           Authentication authentication) throws IOException {
-        User user = (User)authentication.getPrincipal();
-        String redirectURL = "/user/" + user.getUserDetails().getUsername();
+        UserDetailsImpl userDetails = (UserDetailsImpl)authentication.getPrincipal();
+        String redirectURL = "/user/" + userDetails.getUsername();
         strategy.sendRedirect(httpServletRequest, httpServletResponse, redirectURL);
     }
 }

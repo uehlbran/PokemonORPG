@@ -1,6 +1,6 @@
 package orpg.com.pokemonorpg.entities.map;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import orpg.com.pokemonorpg.entities.pokemon.Pokemon;
 
@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 
 @Entity
-@Data
+@Getter
 @NoArgsConstructor
 public class MapLoot {
     @EmbeddedId

@@ -8,7 +8,6 @@ import orpg.com.pokemonorpg.entities.trainer.User;
 import orpg.com.pokemonorpg.services.PartyService;
 import orpg.com.pokemonorpg.services.UserService;
 
-import java.security.Principal;
 import java.time.LocalDate;
 
 @Controller
@@ -31,8 +30,7 @@ public class UserController {
     }
 
     @GetMapping("/user/{username}")
-    public String getUserIndex(@PathVariable String username, Model model, Principal principal) {
-        if (principal != null) System.out.println((principal.toString()));
+    public String getUserIndex(@PathVariable String username, Model model) {
         setupModel(model, username);
         return "/user/index";
     }

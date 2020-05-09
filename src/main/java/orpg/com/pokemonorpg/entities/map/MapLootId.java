@@ -1,5 +1,6 @@
 package orpg.com.pokemonorpg.entities.map;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Embeddable;
@@ -7,6 +8,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
+@Getter
 @NoArgsConstructor
 public class MapLootId implements Serializable {
     private Long mapId;

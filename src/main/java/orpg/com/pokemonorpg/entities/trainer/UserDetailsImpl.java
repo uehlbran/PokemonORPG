@@ -1,9 +1,6 @@
 package orpg.com.pokemonorpg.entities.trainer;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.NaturalId;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,10 +13,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Embeddable
-@Getter @Setter
-@NoArgsConstructor
+@Getter
+@NoArgsConstructor @AllArgsConstructor
 public class UserDetailsImpl implements UserDetails {
-    //UserDetail Settings
     @NaturalId
     protected String username;
     protected String password;
@@ -29,7 +25,7 @@ public class UserDetailsImpl implements UserDetails {
     protected boolean isEnabled = true;
     @Setter(value = AccessLevel.NONE)
     @ElementCollection
-    protected Set<SimpleGrantedAuthority> roles = new HashSet<>();
+    protected Set<GrantedAuthority> roles = new HashSet<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -38,25 +34,5 @@ public class UserDetailsImpl implements UserDetails {
 
     public void addAuthority(Roles role) {
         roles.add(new SimpleGrantedAuthority(role.toString()));
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return isAccountNonExpired;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return isAccountNonLocked;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return isCredentialsNonExpired;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return isEnabled;
     }
 }

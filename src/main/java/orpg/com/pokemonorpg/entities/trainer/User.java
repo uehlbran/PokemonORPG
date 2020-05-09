@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import orpg.com.pokemonorpg.entities.Gender;
 import orpg.com.pokemonorpg.entities.Image;
@@ -24,6 +25,8 @@ import java.util.Set;
 public class User extends Base {
     @Version
     private int version;
+    @Embedded
+    private UserDetailsImpl userDetails = new UserDetailsImpl();
 
     //Pokemon Settings
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
@@ -32,13 +35,9 @@ public class User extends Base {
     @Setter(value = AccessLevel.NONE)
     private int maxPokemon = 500;
 
-    //UserDetails Settings
-    @Embedded
-    private UserDetailsImpl userDetails = new UserDetailsImpl();
-
     private User(String username,
                  String password,
-                 Set<SimpleGrantedAuthority> roles,
+                 Set<GrantedAuthority> roles,
                  LocalDate dob,
                  Gender gender,
                  Image icon) {
@@ -92,8 +91,8 @@ public class User extends Base {
                     icon);
         }
 
-        private static Set<SimpleGrantedAuthority> createRoles(Roles role) {
-            HashSet<SimpleGrantedAuthority> roles = new HashSet<>();
+        private static Set<GrantedAuthority> createRoles(Roles role) {
+            HashSet<GrantedAuthority> roles = new HashSet<>();
             if (role == Roles.ADMINISTRATOR) {
                 roles.add(new SimpleGrantedAuthority(Roles.ADMINISTRATOR.toString()));
             }

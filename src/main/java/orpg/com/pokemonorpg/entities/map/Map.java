@@ -1,16 +1,13 @@
 package orpg.com.pokemonorpg.entities.map;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import orpg.com.pokemonorpg.entities.Image;
 
 import javax.persistence.*;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Setter @Getter
+@NoArgsConstructor @AllArgsConstructor
 public class Map {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
