@@ -200,6 +200,7 @@ public class dataLoader implements CommandLineRunner {
                 Gender.MALE);
 
         Party party = Party.Factory.createParty(user);
+        party.addToParty(pokemon);
 
         userService.save(user);
         speciesService.save(species);

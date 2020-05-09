@@ -5,17 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.NaturalId;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import orpg.com.pokemonorpg.entities.Gender;
 import orpg.com.pokemonorpg.entities.Image;
 import orpg.com.pokemonorpg.entities.pokemon.Pokemon;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -25,14 +21,12 @@ import java.util.Set;
 @NoArgsConstructor
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class User extends Base implements UserDetails {
+public class User extends Base {
     @Version
     private int version;
-    @NaturalId
-    private String username;
-    private String password;
     @Enumerated(value = EnumType.STRING)
     private Gender gender;
+
     //Pokemon Settings
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @Setter(value = AccessLevel.NONE)
@@ -40,13 +34,10 @@ public class User extends Base implements UserDetails {
     private LocalDate dob;
     @Setter(value = AccessLevel.NONE)
     private int maxPokemon = 500;
-    //UserDetail Settings
-    private boolean isAccountNonExpired = true;
-    private boolean isAccountNonLocked = true;
-    private boolean isCredentialsNonExpired = true;
-    private boolean isEnabled = true;
-    @ElementCollection
-    private Set<SimpleGrantedAuthority> roles = new HashSet<>();
+
+    //UserDetails Settings
+    @Embedded
+    private UserDetailsImpl userDetails = new UserDetailsImpl();
 
     private User(String username,
                  String password,
@@ -54,9 +45,9 @@ public class User extends Base implements UserDetails {
                  LocalDate dob,
                  Gender gender,
                  Image icon) {
-        this.username = username;
-        this.password = password;
-        this.roles = roles;
+        this.userDetails.username = username;
+        this.userDetails.password = password;
+        this.userDetails.roles = roles;
         this.dob = dob;
         this.gender = gender;
         this.setIcon(icon);
@@ -76,54 +67,16 @@ public class User extends Base implements UserDetails {
     }
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles;
-    }
-
-    public void addAuthority(Roles role) {
-        roles.add(new SimpleGrantedAuthority(role.toString()));
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return isAccountNonExpired;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return isAccountNonLocked;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return isCredentialsNonExpired;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return isEnabled;
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
-        return username != null && username.equals(user.username);
+        return userDetails.username != null && userDetails.username.equals(user.userDetails.username);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(username);
-    }
-
-    //TODO: Lombok @Data annotation causes an lazy initialization exception
-    //Overriding this method solves the problem, but need to investigate this issue further
-    @Override
-    public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                '}';
+        return Objects.hash(userDetails.username);
     }
 
     public static class Factory {

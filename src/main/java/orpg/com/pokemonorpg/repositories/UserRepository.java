@@ -11,10 +11,10 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends PagingAndSortingRepository<User, Long> {
-    @EntityGraph(attributePaths = {"roles"})
+    @EntityGraph(attributePaths = {"userDetails.roles"})
     @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
-    Optional<User> findUserByUsername(String username);
-    @EntityGraph(attributePaths = {"roles"})
+    Optional<User> findUserByUserDetailsUsername(String username);
+    @EntityGraph(attributePaths = {"userDetails.roles"})
     @QueryHints({@QueryHint(name="org.hibernate.cacheable", value="true")})
     Optional<User> findUserById(Long id);
 }

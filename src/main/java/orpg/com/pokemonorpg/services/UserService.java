@@ -19,7 +19,7 @@ public class UserService implements UserDetailsService {
     }
     @Transactional
     public User findUserByUsername(String username) {
-        return repository.findUserByUsername(username).orElseThrow(() -> new RuntimeException("User was not found!"));
+        return repository.findUserByUserDetailsUsername(username).orElseThrow(() -> new RuntimeException("User was not found!"));
     }
     @Transactional
     public User findUserById(Long id) {
@@ -29,7 +29,7 @@ public class UserService implements UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        return findUserByUsername(s);
+        return findUserByUsername(s).getUserDetails();
     }
     @Transactional
     public User save(User user) {

@@ -26,7 +26,7 @@ public class AuthenticationSuccessRedirectHandler implements AuthenticationSucce
                           HttpServletResponse httpServletResponse,
                           Authentication authentication) throws IOException {
         User user = (User)authentication.getPrincipal();
-        String redirectURL = "/user/" + user.getUsername();
+        String redirectURL = "/user/" + user.getUserDetails().getUsername();
         strategy.sendRedirect(httpServletRequest, httpServletResponse, redirectURL);
     }
 }
